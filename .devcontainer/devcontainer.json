@@ -1,0 +1,36 @@
+{
+    "name": "ubuntu-python-mamba",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "."
+    },
+    "runArgs": [
+        "--gpus",
+        "all"
+    ],
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "python.defaultInterpreterPath": "/opt/conda/bin/python",
+                "python.condaPath": "/opt/conda/bin/mamba",
+                "[python]": {
+                    "editor.formatOnSave": true,
+                    "editor.codeActionsOnSave": {
+                        "source.fixAll": true,
+                        "source.organizeImports": true
+                    },
+                    "editor.defaultFormatter": "charliermarsh.ruff"
+                }
+            },
+            "extensions": [
+                "ms-python.python",
+                "charliermarsh.ruff",
+                "KevinRose.vsc-python-indent",
+                "njpwerner.autodocstring",
+                "VisualStudioExptTeam.vscodeintellicode"
+            ]
+        }
+    },
+    "postCreateCommand": "bash .devcontainer/setup.sh",
+    "remoteUser": "vscode"
+}
